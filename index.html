@@ -21,5 +21,33 @@
 
       </tr>
     </table>
+
+    <script>
+      function updateClock() {
+        let date = new Date();
+        let hours = date.getHours() + 2; //Time zone CEST UTC+2:00
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
+
+        if(hours < 10) {
+          hours = "0" + hours;
+        }
+
+        if(minutes < 10) {
+          minutes = "0" + minutes;
+        }
+
+        if(seconds < 10) {
+          seconds = "0" + seconds;
+        }
+
+        let clockElement = document.querySelector("#clock");
+        clockElement.innerHTML = "<h1>" + hours + ":" + minutes + ":" + seconds + "</h1";
+      }
+
+      updateClock();
+      setInterval(updateClock, 1000);
+
+    </script>
   </body>
 </html>
