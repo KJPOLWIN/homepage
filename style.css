@@ -43,3 +43,15 @@ td {
 #links-row {
   height: 50%;
 }
+
+input[name="q"] {
+  background-color: #000000;
+  color: #FFFFFF;
+  padding: 10px;
+  font-size: 24px;
+  width: 89%;
+  margin-left: 5%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 2px solid #FFFFFF;
+}
