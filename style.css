@@ -17,7 +17,7 @@ body {
   padding: 0;
 }
 
-table {
+#layout {
   border-collapse: collapse;
   margin: auto;
   width: 90%;
@@ -26,8 +26,20 @@ table {
   margin-bottom: 5vh;
 }
 
-td {
+#layout td {
   border: 8px double #FFFFFF;
+}
+
+#links {
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+}
+
+#links td{
+  border: 0px;
+  width: 16%;
+  height: 80%;
 }
 
 #clock {
@@ -54,4 +66,9 @@ input[name="q"] {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 2px solid #FFFFFF;
+}
+
+ul {
+ margin-top: 0px;
+ height: 100%;
 }
