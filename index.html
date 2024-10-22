@@ -10,7 +10,33 @@
     <table id="layout">
       <tr id="clock-row">
         <td id="clock"><h1>21:37:00</h1></td>
-        <td>weather here</td>
+        <td id="weather">
+          <div>
+          <h2>Łódź</h2>
+          <table id="weather">
+            <tr>
+              <td>Temperatura</td>
+              <td id="temperature"></td>
+            </tr>
+            <tr>
+              <td>Wilgotność</td>
+              <td id="humidity"></td>
+            </tr>
+            <tr>
+              <td>Ciśnienie</td>
+              <td id="pressure"></td>
+            </tr>
+            <tr>
+              <td>Suma opadów</td>
+              <td id="rain"></td>
+            </tr>
+            <tr>
+              <td>Prędkość wiatru</td>
+              <td id="wind"></td>
+            </tr>
+          </table>
+          </div>
+        </td>
       </tr>
       <tr id="searchbar-row">
         <td colspan="2">
@@ -108,6 +134,32 @@
 
       updateClock();
       setInterval(updateClock, 1000);
+
+
+      async function getWeather() {
+        const url = "https://danepubliczne.imgw.pl/api/data/synop/";
+        try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+        }
+
+        const json = await response.json();
+        console.log(json);
+        console.log(json["27"].stacja);
+
+        document.getElementById("temperature").innerHTML = json["27"].temperatura + "°C";
+        document.getElementById("humidity").innerHTML = json["27"].wilgotnosc_wzgledna + "%";
+        document.getElementById("pressure").innerHTML = json["27"].cisnienie + " hPa";
+        document.getElementById("rain").innerHTML = json["27"].suma_opadu + " mm";
+        document.getElementById("wind").innerHTML = json["27"].predkosc_wiatru + " km/h";
+
+        } catch (error) {
+          console.error(error.message);
+        }
+      }
+
+      getWeather();
 
     </script>
   </body>
